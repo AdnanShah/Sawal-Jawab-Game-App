@@ -11,7 +11,7 @@ var contactus = require('./api/contactus');
 var config = require('../config/configuration.js');
 var apiPrefix = '/api/';
 
-console.log("Regime is running on port 3338!");
+console.log("Regime is running on port 3399!");
 
 exports.router = function (app) {
     // app.use((req, res, next) => {
