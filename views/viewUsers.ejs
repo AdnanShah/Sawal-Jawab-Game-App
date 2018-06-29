@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/jquery.dataTables.min.css' />
+    <script src="/javascripts/jquery-1.12.3.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/javascripts/config.js"></script>
+    <script src="/javascripts/userjs.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+</head>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <h2>Shop Data</h2>
+
+        <table class="table table-primary table-striped">
+            <thead>
+                <tr>
+                    <th>User Name </th>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userTBody">
+                <td>
+                    <%=title%>
+                </td>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
