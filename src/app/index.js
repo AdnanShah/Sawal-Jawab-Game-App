@@ -33,7 +33,7 @@ import ColorOption from 'containers/Customizer/ColorOption';
 import {isIOS, isMobile} from 'react-device-detect';
 import asyncComponent from '../util/asyncComponent';
 import TopNav from 'components/TopNav';
-
+import CreateQuestions from './routes/createQuestions';
 class App extends React.Component {
 
     render() {
@@ -70,6 +70,7 @@ class App extends React.Component {
                                 <Route path={`${match.url}/components`} component={Components}/>
                                 <Route path={`${match.url}/icons`} component={Icons}/>
                                 <Route path={`${match.url}/form`} component={Form}/>
+                                <Route path={`${match.url}/createquestions`} component={CreateQuestions}/>
                                 <Route path={`${match.url}/editor`} component={Editors}/>
                                 <Route path={`${match.url}/pickers`} component={Pickers}/>
                                 <Route path={`${match.url}/extensions`} component={Extensions}/>
