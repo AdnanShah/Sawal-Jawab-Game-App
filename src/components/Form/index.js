@@ -1,6 +1,5 @@
 import React from "react";
 
-import ContainerHeader from "components/ContainerHeader/index";
 import CardBox from "components/CardBox/index";
 import IntlMessages from "util/IntlMessages";
 import Input from "@material-ui/core/Input";
@@ -38,10 +37,6 @@ class Form extends React.Component {
   render() {
     return (
       <div className="animated slideInUpTiny animation-duration-3">
-        <ContainerHeader
-          match={this.props.match}
-          title={<IntlMessages id="Questions" />}
-        />
         <div className="row">
           <CardBox
             styleName="col-lg-12"

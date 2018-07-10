@@ -4,7 +4,7 @@ import asyncComponent from '../../../util/asyncComponent';
 
 
 const CreateQuestions = ({match}) => (
-    <div className="app-wrapper">
+  <div className="app-wrapper">
         <Switch>
             <Redirect exact from={`${match.url}/`} to={`${match.url}/components`}/>
             <Route path={`${match.url}/components`} component={asyncComponent(() => import('./routes/components'))}/>

@@ -7,7 +7,7 @@ import Footer from 'components/Footer';
 import Dashboard from './routes/dashboard';
 import Components from './routes/components';
 import Icons from './routes/icons/index';
-import Form from './routes/form';
+// import Form from './routes/form';
 import Editors from './routes/editors';
 import Pickers from './routes/pickers';
 import Extensions from './routes/extensions';
@@ -34,6 +34,7 @@ import {isIOS, isMobile} from 'react-device-detect';
 import asyncComponent from '../util/asyncComponent';
 import TopNav from 'components/TopNav';
 import CreateQuestions from './routes/createQuestions';
+import Form from '../components/Form';
 class App extends React.Component {
 
     render() {
@@ -71,6 +72,7 @@ class App extends React.Component {
                                 <Route path={`${match.url}/icons`} component={Icons}/>
                                 <Route path={`${match.url}/form`} component={Form}/>
                                 <Route path={`${match.url}/createquestions`} component={CreateQuestions}/>
+                                <Route path={`${match.url}/questions`} component={Form}/>
                                 <Route path={`${match.url}/editor`} component={Editors}/>
                                 <Route path={`${match.url}/pickers`} component={Pickers}/>
                                 <Route path={`${match.url}/extensions`} component={Extensions}/>
