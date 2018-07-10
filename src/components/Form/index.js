@@ -129,18 +129,6 @@ class Form extends Component {
                     <FormControlLabel
                       control={
                         <div>
-                          {/* <Radio
-                            checked={this.state.answer === "option1"}
-                            onChange={this.handleChange("answer")}
-                            value="option1"
-                            name="option1"
-                            aria-label="A"
-                          /> */}
-
-                          {/* <Checkbox
-                            onChange={this.handleChange("answer")}
-                            value="option1"
-                          /> */}
                           <TextField
                             id="answer"
                             label="Answer"
@@ -155,17 +143,6 @@ class Form extends Component {
                     <FormControlLabel
                       control={
                         <div>
-                          {/* <Radio
-                            checked={this.state.answer === "option2"}
-                            onChange={this.handleChange("answer")}
-                            value="option2"
-                            name="option2"
-                            aria-label="A"
-                          /> */}
-                          {/* <Checkbox
-                            onChange={this.handleChange("answer")}
-                            value="option1"
-                          /> */}
                           <TextField
                             id="option2"
                             label="Option#2"
@@ -180,17 +157,6 @@ class Form extends Component {
                     <FormControlLabel
                       control={
                         <div>
-                          {/* <Radio
-                            checked={this.state.answer === "option3"}
-                            onChange={this.handleChange("answer")}
-                            value="option3"
-                            name="option3"
-                            aria-label="A"
-                          /> */}
-                          {/* <Checkbox
-                            onChange={this.handleChange("answer")}
-                            value="option3"
-                          /> */}
                           <TextField
                             id="option3"
                             label="Option#3"
@@ -205,17 +171,6 @@ class Form extends Component {
                     <FormControlLabel
                       control={
                         <div>
-                          {/* <Radio
-                            checked={this.state.answer === "option4"}
-                            onChange={this.handleChange("answer")}
-                            value="option4"
-                            name="option4"
-                            aria-label="A"
-                          /> */}
-                          {/* <Checkbox
-                            onChange={this.handleChange("answer")}
-                            value="option4"
-                          /> */}
                           <TextField
                             id="option4"
                             label="Option#4"
@@ -232,10 +187,7 @@ class Form extends Component {
                 </FormControl>
               </div>
 
-              <div
-                className="col-4 mt-5"
-                //   style={{ border: "2px solid red" }}
-              >
+              <div className="col-4 mt-5">
                 <h1 className="text-danger text-center mb-2">
                   Mandatory Options
                 </h1>
@@ -278,8 +230,6 @@ class Form extends Component {
                   >
                     Add Other Category
                   </Button>
-                  {/* </div>
-                <div className=""> */}
                   <TextField
                     select
                     className="mt-5"
