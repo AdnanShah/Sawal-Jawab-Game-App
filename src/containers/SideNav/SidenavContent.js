@@ -89,11 +89,21 @@ class SidenavContent extends Component {
 
           <li className="menu collapse-box">
             <li className="menu no-arrow">
-              <NavLink to="/app/questions">
+              <NavLink to="/app/form">
                 <i className="zmdi zmdi-widgets zmdi-hc-fw" />
                 <span className="nav-text">
                   {/* <IntlMessages id="sidebar.widgets" /> */}
                   Create Questions
+                </span>
+              </NavLink>
+            </li>
+          
+            <li className="menu no-arrow">
+              <NavLink to="/app/questions">
+                <i className="zmdi zmdi-widgets zmdi-hc-fw" />
+                <span className="nav-text">
+                  {/* <IntlMessages id="sidebar.widgets" /> */}
+                  All Questions
                 </span>
               </NavLink>
             </li>
