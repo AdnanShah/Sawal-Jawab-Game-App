@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import CardBox from "components/CardBox/index";
 import IntlMessages from "util/IntlMessages";
 import Input from "@material-ui/core/Input";
@@ -11,19 +11,24 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
 
 const level = [
   {
-    value: "Easy",
-    label: "Easy"
+    value: "simple",
+    label: "Simple"
   },
   {
-    value: "Mid",
-    label: "Mid"
+    value: "light",
+    label: "Light"
   },
   {
-    value: "Difficult",
-    label: "Difficult"
+    value: "medium",
+    label: "Medium"
+  },
+  {
+    value: "hard",
+    label: "Hard"
   }
 ];
 const category = [
@@ -40,18 +45,55 @@ const category = [
     label: "Other"
   }
 ];
-class Form extends React.Component {
-  state = {
-    question: "",
-    answer: "",
-    option1: "",
-    option2: "",
-    option3: "",
-    option4: "",
-    level: "",
-    category: "",
-    addCategory: false
-  };
+class Form extends Component {
+  constructor(props) {
+    super(props);
+    this.addQuestion = this.addQuestion.bind(this);
+
+    this.state = {
+      question: "",
+      answer: "",
+      option1: "",
+      option2: "",
+      option3: "",
+      option4: "",
+      level: "",
+      category: "",
+      addCategory: false,
+      x_access_key: "ZVYC-9AA9-13QT-484S",
+      x_access_token:
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiaWF0IjoxNTMwOTMyMzY2fQ.zqmGxDLhsKFomoYcDwFVArh5CZzSzJUrubHisOwEB80"
+    };
+  }
+  addQuestion() {
+    console.log("addQuestion", this.state);
+    let data = this.state.x_access_key;
+    let token = this.state.x_access_token;
+
+    axios({
+      method: "POST",
+      url: "https://seenmeem.herokuapp.com/api/services/createQuestion",
+      headers: {
+        "x-access-key": data,
+        "x-access-token": token
+      },
+      data: {
+        type: this.state.category,
+        question: this.state.question,
+        answer: this.state.answer,
+        option_b: this.state.option2,
+        option_c: this.state.option3,
+        option_d: this.state.option4,
+        difficulty: this.state.level
+      }
+    })
+      .then(res => {
+        console.log("res", res);
+      })
+      .catch(err => {
+        console.log("error in request", err);
+      });
+  }
 
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
@@ -87,23 +129,23 @@ class Form extends React.Component {
                     <FormControlLabel
                       control={
                         <div>
-                          <Radio
+                          {/* <Radio
                             checked={this.state.answer === "option1"}
                             onChange={this.handleChange("answer")}
                             value="option1"
                             name="option1"
                             aria-label="A"
-                          />
+                          /> */}
 
                           {/* <Checkbox
                             onChange={this.handleChange("answer")}
                             value="option1"
                           /> */}
                           <TextField
-                            id="option1"
-                            label="Option#1"
-                            value={this.state.option1}
-                            onChange={this.handleChange("option1")}
+                            id="answer"
+                            label="Answer"
+                            value={this.state.answer}
+                            onChange={this.handleChange("answer")}
                             margin="normal"
                           />
                         </div>
@@ -113,13 +155,13 @@ class Form extends React.Component {
                     <FormControlLabel
                       control={
                         <div>
-                          <Radio
+                          {/* <Radio
                             checked={this.state.answer === "option2"}
                             onChange={this.handleChange("answer")}
                             value="option2"
                             name="option2"
                             aria-label="A"
-                          />
+                          /> */}
                           {/* <Checkbox
                             onChange={this.handleChange("answer")}
                             value="option1"
@@ -138,13 +180,13 @@ class Form extends React.Component {
                     <FormControlLabel
                       control={
                         <div>
-                          <Radio
+                          {/* <Radio
                             checked={this.state.answer === "option3"}
                             onChange={this.handleChange("answer")}
                             value="option3"
                             name="option3"
                             aria-label="A"
-                          />
+                          /> */}
                           {/* <Checkbox
                             onChange={this.handleChange("answer")}
                             value="option3"
@@ -163,13 +205,13 @@ class Form extends React.Component {
                     <FormControlLabel
                       control={
                         <div>
-                          <Radio
+                          {/* <Radio
                             checked={this.state.answer === "option4"}
                             onChange={this.handleChange("answer")}
                             value="option4"
                             name="option4"
                             aria-label="A"
-                          />
+                          /> */}
                           {/* <Checkbox
                             onChange={this.handleChange("answer")}
                             value="option4"
@@ -260,6 +302,7 @@ class Form extends React.Component {
                     variant="contained"
                     color="secondary"
                     className="mt-2 text-center"
+                    onClick={this.addQuestion}
                   >
                     Add Question
                   </Button>
