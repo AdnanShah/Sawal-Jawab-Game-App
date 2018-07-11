@@ -6,6 +6,7 @@ import List from "@material-ui/core/List";
 import Collapsible from "react-collapsible";
 import Button from "@material-ui/core/Button";
 import { questions } from "./data";
+import { NavLink } from 'react-router-dom';
 
 class ReactTables extends Component {
   constructor(props) {
@@ -58,9 +59,9 @@ class ReactTables extends Component {
         <div className="m-5">
           <Paper
             styleName="col-lg-12 h-100"
-            heading={<IntlMessages id="Question List:" />}
+            heading={<IntlMessages id="Quiz Questions:" />}
           >
-            <h1 className="ml-2 bold mb-5 mt-5 ">Question List</h1>
+            <h1 className="ml-2 bold mb-5 mt-5 ">Quiz Questions:</h1>
             {questions.map((item, i) => {
               return (
                 <div className="mr-5 ml-5" style={{ lineHeight: "2px" }}>
@@ -71,36 +72,64 @@ class ReactTables extends Component {
                         <p className="col">{`${`Q#${i + 1}`}    ${
                           item.options1
                         }`}</p>
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                        <NavLink to="/app/questionslist">
+                          <Button
+                            className="float-right"
+                            size="small"
+                            color="primary"
+                            variant="outlined"
+                          >
+                            Search Questions
+                          </Button>
+                        </NavLink>
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
                           item.options2
                         }`}</p>
 
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                        <NavLink to="/app/questionslist">
+                          <Button
+                            className="float-right"
+                            size="small"
+                            color="primary"
+                            variant="outlined"
+                          >
+                            Search Questions
+                          </Button>
+                        </NavLink>
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
                           item.options3
                         }`}</p>
 
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                        <NavLink to="/app/questionslist">
+                          <Button
+                            className="float-right"
+                            size="small"
+                            color="primary"
+                            variant="outlined"
+                          >
+                            Search Questions
+                          </Button>
+                        </NavLink>
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
                           item.options4
                         }`}</p>
 
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                        <NavLink to="/app/questionslist">
+                          <Button
+                            className="float-right"
+                            size="small"
+                            color="primary"
+                            variant="outlined"
+                          >
+                            Search Questions
+                          </Button>
+                        </NavLink>
                       </div>
                     </List>
                   </Collapsible>

@@ -54,7 +54,7 @@ import PopularProduct from "components/dashboard/Common/PopularProduct";
 import WeatherDetail from "components/Weather/WeatherDetail";
 import LatestPosts from "components/dashboard/Common/LatestPosts/index";
 import Form from "components/Form/index";
-import ReactTables from "components/ReactTables/index";
+import QuizQuestions from "components/QuizQuestions/index";
 import {
   announcementsNotification,
   appNotification,
@@ -73,7 +73,7 @@ import CardHeader from "components/dashboard/Common/CardHeader/index";
 import IntlMessages from "util/IntlMessages";
 // import CreateQuestions from "./../../../createQuestions/index";
 // import Form from './../../../createQuestions/routes/components/index';
-// import ReactTables from "./../../../../../components/ReactTables/index";
+// import QuizQuestions from "./../../../../../components/QuizQuestions/index";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -105,7 +105,7 @@ class Default extends React.Component {
 
         {/* <CreateQuestions match={`components`} /> */}
         <Form />
-        <ReactTables />
+        <QuizQuestions />
         <div className="row">
           <div className="col-xl-5 col-12">
             <div className="jr-card p-0">
