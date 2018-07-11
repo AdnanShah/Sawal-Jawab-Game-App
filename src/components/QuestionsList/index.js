@@ -6,6 +6,9 @@ import List from "@material-ui/core/List";
 import Collapsible from "react-collapsible";
 import Button from "@material-ui/core/Button";
 import { questions } from "./data";
+import SearchBox from "./../SearchBox/index";
+import red from "@material-ui/core/colors/red";
+import Menu from "./../Menu/index";
 
 class QuestionsList extends Component {
   constructor(props) {
@@ -16,7 +19,8 @@ class QuestionsList extends Component {
       x_access_token:
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiaWF0IjoxNTMwOTMyMzY2fQ.zqmGxDLhsKFomoYcDwFVArh5CZzSzJUrubHisOwEB80",
       userArray: [],
-      questions
+      questions,
+      searchText: ""
     };
   }
   componentWillMount() {
@@ -51,6 +55,15 @@ class QuestionsList extends Component {
         console.log("error in res", err);
       });
   }
+  updateSearchText(evt) {
+    this.setState({
+      searchText: evt.target.value
+    });
+  }
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };
+
   render() {
     console.log("state", this.state);
     return (
@@ -61,6 +74,24 @@ class QuestionsList extends Component {
             heading={<IntlMessages id="Question List:" />}
           >
             <h1 className="ml-2 bold mb-5 mt-5 ">Question List</h1>
+            <div className="well bg-danger m-5" style={red}>
+              <h1 className="text-light ml-2">Search Here:</h1>
+              <div className="row">
+                <SearchBox
+                  styleName="mt-2 ml-5 mb-2"
+                  placeholder=""
+                  onChange={this.updateSearchText.bind(this)}
+                  value={this.state.searchText}
+                />
+                <Menu
+                  className="col-3 ml-2 mr-2 mb-2 text-light"
+                  label="Select Category"
+                  data={questions}
+                  onChange={this.updateSearchText.bind(this)}
+                  value={this.state.searchText}
+                />
+              </div>
+            </div>
             {this.state.userArray.map((item, i) => {
               return (
                 <div className="mr-5 ml-5" style={{ lineHeight: "2px" }}>
