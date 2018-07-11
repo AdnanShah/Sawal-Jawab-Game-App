@@ -61,46 +61,23 @@ class QuestionsList extends Component {
             heading={<IntlMessages id="Question List:" />}
           >
             <h1 className="ml-2 bold mb-5 mt-5 ">Question List</h1>
-            {questions.map((item, i) => {
+            {this.state.userArray.map((item, i) => {
               return (
                 <div className="mr-5 ml-5" style={{ lineHeight: "2px" }}>
-                  <Collapsible trigger={`Q#${i + 1}`}>
+                  <Collapsible trigger={`Q#${i + 1}   ${item.question}`}>
                     <h1>{item.question}</h1>
                     <List component="nav">
-                      <div className="row mt-2 mb-2">
-                        <p className="col">{`${`Q#${i + 1}`}    ${
-                          item.options1
-                        }`}</p>
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                      <div className="row mt-2 mb-2 ml-5">
+                        <p className="col">{`a:   ${item.answer}`}</p>
                       </div>
-                      <div className="row mt-2 mb-2">
-                        <p className="col">{`${`Q#${i + 1}`} ${
-                          item.options2
-                        }`}</p>
-
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                      <div className="row mt-2 mb-2 ml-5">
+                        <p className="col">{`b:   ${item.option_b}`}</p>
                       </div>
-                      <div className="row mt-2 mb-2">
-                        <p className="col">{`${`Q#${i + 1}`} ${
-                          item.options3
-                        }`}</p>
-
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                      <div className="row mt-2 mb-2 ml-5">
+                        <p className="col">{`c:   ${item.option_c}`}</p>
                       </div>
-                      <div className="row mt-2 mb-2">
-                        <p className="col">{`${`Q#${i + 1}`} ${
-                          item.options4
-                        }`}</p>
-
-                        <Button className="float-right" size="small" color="primary" variant="outlined">
-                          Search Questions
-                        </Button>
+                      <div className="row mt-2 mb-2 ml-5">
+                        <p className="col">{`d:   ${item.option_d}`}</p>
                       </div>
                     </List>
                   </Collapsible>
