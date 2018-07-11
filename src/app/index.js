@@ -37,6 +37,7 @@ import CreateQuestions from './routes/createQuestions';
 import Form from '../components/Form';
 import QuizQuestions from '../components/QuizQuestions';
 import QuestionsList from '../components/QuestionsList';
+import CreateQuiz from '../components/CreateQuiz';
 class App extends React.Component {
 
     render() {
@@ -74,6 +75,7 @@ class App extends React.Component {
                                 <Route path={`${match.url}/icons`} component={Icons}/>
                                 <Route path={`${match.url}/form`} component={Form}/>
                                 <Route path={`${match.url}/quizquestions`} component={QuizQuestions}/>
+                                <Route path={`${match.url}/createquiz`} component={CreateQuiz}/>
                                 <Route path={`${match.url}/createquestions`} component={CreateQuestions}/>
                                 <Route path={`${match.url}/questionslist`} component={QuestionsList}/>
                                 {/* <Route path={`${match.url}/questions`} component={Form}/> */}

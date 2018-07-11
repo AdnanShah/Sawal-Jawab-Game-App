@@ -88,7 +88,7 @@ class SidenavContent extends Component {
           </li>
 
             <li className="menu no-arrow">
-              <NavLink to="/app/form">
+              <NavLink to="/app/createquiz">
                 <i className="zmdi zmdi-widgets zmdi-hc-fw" />
                 <span className="nav-text">
                   {/* <IntlMessages id="sidebar.widgets" /> */}
