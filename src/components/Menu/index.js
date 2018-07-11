@@ -14,8 +14,8 @@ const Menu = ({ data, label, onChange, className, value }) => {
       onChange={onChange}
     >
       {data.map(option => (
-        <MenuItem key={option.question} value={option.question}>
-          {option.question}
+        <MenuItem key={option.question} value={option.value}>
+          {option.value}
         </MenuItem>
       ))}
     </TextField>

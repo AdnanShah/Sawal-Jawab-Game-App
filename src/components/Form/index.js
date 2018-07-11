@@ -12,39 +12,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import { category, level } from "./data";
 
-const level = [
-  {
-    value: "simple",
-    label: "Simple"
-  },
-  {
-    value: "light",
-    label: "Light"
-  },
-  {
-    value: "medium",
-    label: "Medium"
-  },
-  {
-    value: "hard",
-    label: "Hard"
-  }
-];
-const category = [
-  {
-    value: "Science",
-    label: "Science"
-  },
-  {
-    value: "Islam",
-    label: "Islam"
-  },
-  {
-    value: "Other",
-    label: "Other"
-  }
-];
 class Form extends Component {
   constructor(props) {
     super(props);

@@ -5,10 +5,11 @@ import axios from "axios";
 import List from "@material-ui/core/List";
 import Collapsible from "react-collapsible";
 import Button from "@material-ui/core/Button";
-import { questions } from "./data";
+import { questions,level,category } from "./data";
 import SearchBox from "./../SearchBox/index";
 import red from "@material-ui/core/colors/red";
 import Menu from "./../Menu/index";
+import purple from "@material-ui/core/colors/purple";
 
 class QuestionsList extends Component {
   constructor(props) {
@@ -20,7 +21,9 @@ class QuestionsList extends Component {
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiaWF0IjoxNTMwOTMyMzY2fQ.zqmGxDLhsKFomoYcDwFVArh5CZzSzJUrubHisOwEB80",
       userArray: [],
       questions,
-      searchText: ""
+      searchText: "",
+      category: "",
+      level: ""
     };
   }
   componentWillMount() {
@@ -74,21 +77,35 @@ class QuestionsList extends Component {
             heading={<IntlMessages id="Question List:" />}
           >
             <h1 className="ml-2 bold mb-5 mt-5 ">Question List</h1>
-            <div className="well bg-danger m-5" style={red}>
-              <h1 className="text-light ml-2">Search Here:</h1>
-              <div className="row">
+            <div
+              className="well m-5"
+              style={{
+                backgroundColor: "#42A5F5",
+                borderRadius: "5px!important"
+              }}
+            >
+              <h1 className="ml-2">Search Here:</h1>
+              <div className="row mb-5">
                 <SearchBox
+                  className="col-3"
                   styleName="mt-2 ml-5 mb-2"
                   placeholder=""
-                  onChange={this.updateSearchText.bind(this)}
+                  onChange={this.handleChange("searchText")}
                   value={this.state.searchText}
                 />
                 <Menu
-                  className="col-3 ml-2 mr-2 mb-2 text-light"
+                  className="col-2 ml-2 mr-2 mb-2 text-light"
                   label="Select Category"
-                  data={questions}
-                  onChange={this.updateSearchText.bind(this)}
-                  value={this.state.searchText}
+                  data={category}
+                  value={this.state.category}
+                  onChange={this.handleChange("category")}
+                />
+                <Menu
+                  className="col-2 ml-2 mr-2 mb-2 text-light"
+                  label="Select Level"
+                  data={level}
+                  value={this.state.level}
+                  onChange={this.handleChange("level")}
                 />
               </div>
             </div>
