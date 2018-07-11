@@ -34,6 +34,7 @@
     "react-big-calendar": "^0.17.0",
     "react-bootstrap-sweetalert": "^4.1.0",
     "react-ckeditor-component": "^1.0.7",
+    "react-collapsible": "^2.2.0",
     "react-color": "^2.13.8",
     "react-custom-scrollbars": "^4.2.1",
     "react-device-detect": "^0.1.0",
