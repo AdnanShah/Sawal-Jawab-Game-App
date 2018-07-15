@@ -5,7 +5,7 @@ import axios from "axios";
 import List from "@material-ui/core/List";
 import Collapsible from "react-collapsible";
 import Button from "@material-ui/core/Button";
-import { questions,level,category } from "./data";
+import { questions, level, category } from "./data";
 import SearchBox from "./../SearchBox/index";
 import red from "@material-ui/core/colors/red";
 import Menu from "./../Menu/index";
@@ -20,6 +20,7 @@ class QuestionsList extends Component {
       x_access_token:
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiaWF0IjoxNTMwOTMyMzY2fQ.zqmGxDLhsKFomoYcDwFVArh5CZzSzJUrubHisOwEB80",
       userArray: [],
+      originalResponse: [],
       questions,
       searchText: "",
       category: "",
@@ -41,7 +42,7 @@ class QuestionsList extends Component {
     })
       .then(res => {
         let userArray = res.data.message;
-        console.log("key", userArray);
+        console.table(userArray);
         // let all_user = [];
         // for (let i = 0; i < key.length; i++) {
         //   let k = key[i]
@@ -52,7 +53,7 @@ class QuestionsList extends Component {
         //     ItemName: res.data.data[k].ItemName,
         //   })
         // }
-        this.setState({ userArray });
+        this.setState({ userArray, originalResponse: userArray });
       })
       .catch(err => {
         console.log("error in res", err);
@@ -65,6 +66,34 @@ class QuestionsList extends Component {
   }
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
+  };
+
+  searchBy = () => {
+    let searchBy = [];
+    {
+      searchBy.push(
+        ...this.state.originalResponse.filter(item => {
+          let searchText =
+            this.state.searchText != ""
+              ? item.question
+                  .toLowerCase()
+                  .search(this.state.searchText.toLowerCase()) !== -1
+              : true;
+          let category =
+            this.state.category != ""
+              ? item.type.toLowerCase() === this.state.category.toLowerCase()
+              : true;
+          let level =
+            this.state.level != ""
+              ? item.difficulty.toLowerCase() === this.state.level.toLowerCase()
+              : true;
+
+          return searchText && category && level;
+        })
+      );
+    }
+    console.table(searchBy, ["id", "question", "difficulty", "type"]);
+    this.setState({ userArray: searchBy });
   };
 
   render() {
@@ -107,6 +136,7 @@ class QuestionsList extends Component {
                   value={this.state.level}
                   onChange={this.handleChange("level")}
                 />
+                <Button onClick={this.searchBy}>Filter</Button>
               </div>
             </div>
             {this.state.userArray.map((item, i) => {

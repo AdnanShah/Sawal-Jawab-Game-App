@@ -100,12 +100,32 @@ export const level = [
 ];
 export const category = [
   {
-    value: "Science",
-    label: "Science"
+    value: "Maths",
+    label: "Maths"
+  },
+  {
+    value: "Geographic",
+    label: "Geographic"
+  },
+  {
+    value: "Cricket",
+    label: "Cricket"
+  },
+  {
+    value: "FootBall",
+    label: "FootBall"
+  },
+  {
+    value: "BaseBall",
+    label: "BaseBall"
   },
   {
     value: "Islam",
     label: "Islam"
+  },
+  {
+    value: "Economy",
+    label: "Economy"
   },
   {
     value: "Other",
