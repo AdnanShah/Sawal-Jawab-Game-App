@@ -92,7 +92,7 @@ class QuestionsList extends Component {
         })
       );
     }
-    console.table(searchBy, ["id", "question", "difficulty", "type"]);
+    // console.table(searchBy, ["id", "question", "difficulty", "type"]);
     this.setState({ userArray: searchBy });
   };
 
