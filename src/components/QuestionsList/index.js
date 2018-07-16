@@ -136,7 +136,14 @@ class QuestionsList extends Component {
                   value={this.state.level}
                   onChange={this.handleChange("level")}
                 />
-                <Button onClick={this.searchBy}>Filter</Button>
+                <Button
+                  className="col-2 ml-2 mr-2 mb-2 text-light"
+                  variant="contained"
+                  color="primary"
+                  onClick={this.searchBy}
+                >
+                  Filter
+                </Button>
               </div>
             </div>
             {this.state.userArray.map((item, i) => {
@@ -144,20 +151,35 @@ class QuestionsList extends Component {
                 <div className="mr-5 ml-5" style={{ lineHeight: "2px" }}>
                   <Collapsible trigger={`Q#${i + 1}   ${item.question}`}>
                     <h1>{item.question}</h1>
-                    <List component="nav">
-                      <div className="row mt-2 mb-2 ml-5">
-                        <p className="col">{`a:   ${item.answer}`}</p>
+
+                    <div className="row">
+                      <div className="col">
+                        <List component="nav">
+                          <div className="row mt-2 mb-2 ml-5">
+                            <p className="col">{`a:   ${item.answer}`}</p>
+                          </div>
+                          <div className="row mt-2 mb-2 ml-5">
+                            <p className="col">{`b:   ${item.option_b}`}</p>
+                          </div>
+                          <div className="row mt-2 mb-2 ml-5">
+                            <p className="col">{`c:   ${item.option_c}`}</p>
+                          </div>
+                          <div className="row mt-2 mb-2 ml-5">
+                            <p className="col">{`d:   ${item.option_d}`}</p>
+                          </div>
+                        </List>
                       </div>
-                      <div className="row mt-2 mb-2 ml-5">
-                        <p className="col">{`b:   ${item.option_b}`}</p>
+                      <div className="col-2 float-left">
+                        <Button
+                          size="small"
+                          variant="contained"
+                          color="primary"
+                          className="ml-5"
+                        >
+                          Add
+                        </Button>
                       </div>
-                      <div className="row mt-2 mb-2 ml-5">
-                        <p className="col">{`c:   ${item.option_c}`}</p>
-                      </div>
-                      <div className="row mt-2 mb-2 ml-5">
-                        <p className="col">{`d:   ${item.option_d}`}</p>
-                      </div>
-                    </List>
+                    </div>
                   </Collapsible>
                 </div>
               );
