@@ -36,16 +36,16 @@ class CreateQuiz extends Component {
 
     axios({
       method: "POST",
-      url: "https://seenmeem.herokuapp.com/api/services/createQuestion",
+      url: "https://seenmeem.herokuapp.com/api/services/createQuiz",
       headers: {
         "x-access-key": data,
         "x-access-token": token
       },
       data: {
-        type: this.state.creator,
-        type: this.state.quizname,
-        type: this.state.session,
-        type: this.state.selectedDate,
+        quiz_name: this.state.quizname,
+        date: this.state.datetime
+        // type: this.state.session,
+        // type: this.state.selectedDate
       }
     })
       .then(res => {
@@ -73,7 +73,7 @@ class CreateQuiz extends Component {
             heading={<IntlMessages id="Create Quiz:" />}
           >
             <div className="row">
-              <div className="col">
+              {/* <div className="col">
                 <TextField
                   className=""
                   id="creator"
@@ -83,7 +83,7 @@ class CreateQuiz extends Component {
                   margin="normal"
                   fullWidth
                 />
-              </div>
+              </div> */}
               <div className="col">
                 <TextField
                   className=""
@@ -95,9 +95,25 @@ class CreateQuiz extends Component {
                   fullWidth
                 />
               </div>
+              <div className="col">
+                <TextField
+                  id="datetime-local"
+                  label="Time"
+                  type="datetime-local"
+                  defaultValue="2017-05-24T10:30"
+                  value={this.state.datetime}
+                  onChange={this.handleChange("datetime")}
+                  // className={classes.textField}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  fullWidth
+                  style={{ marginTop: "15px" }}
+                />
+              </div>
             </div>
             <div className="row">
-              <div className="col-4">
+              {/* <div className="col-4">
                 <TextField
                   value={this.state.selectedDate}
                   onChange={this.handleDateChange}
@@ -111,8 +127,8 @@ class CreateQuiz extends Component {
                   fullWidth
                   style={{ marginTop: "15px" }}
                 />
-              </div>
-              <div className="col-4">
+              </div> */}
+              {/* <div className="col-4">
                 <TextField
                   className=""
                   id="session"
@@ -122,8 +138,8 @@ class CreateQuiz extends Component {
                   margin="normal"
                   fullWidth
                 />
-              </div>
-              <div className="col-2" style={{ marginTop: "25px" }}>
+              </div> */}
+              <div className="col-2 float-left" style={{ marginTop: "25px" }}>
                 <Button
                   variant="outlined"
                   color="secondary"
