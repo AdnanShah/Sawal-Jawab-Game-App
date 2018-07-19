@@ -87,16 +87,16 @@ class SidenavContent extends Component {
             <IntlMessages id="sidebar.main" />
           </li>
 
-            <li className="menu no-arrow">
-              <NavLink to="/app/createquiz">
-                <i className="zmdi zmdi-widgets zmdi-hc-fw" />
-                <span className="nav-text">
-                  {/* <IntlMessages id="sidebar.widgets" /> */}
-                  Create Quiz
-                </span>
-              </NavLink>
-            </li>
-      
+          <li className="menu no-arrow">
+            <NavLink to="/app/createquiz">
+              <i className="zmdi zmdi-widgets zmdi-hc-fw" />
+              <span className="nav-text">
+                {/* <IntlMessages id="sidebar.widgets" /> */}
+                Create Quiz
+              </span>
+            </NavLink>
+          </li>
+
           <li className="menu collapse-box">
             <li className="menu no-arrow">
               <NavLink to="/app/form">
@@ -124,6 +124,16 @@ class SidenavContent extends Component {
                 <span className="nav-text">
                   {/* <IntlMessages id="sidebar.widgets" /> */}
                   Questions List
+                </span>
+              </NavLink>
+            </li>
+
+            <li className="menu no-arrow">
+              <NavLink to="/app/quizlist">
+                <i className="zmdi zmdi-book-image zmdi-hc-fw" />
+                <span className="nav-text">
+                  {/* <IntlMessages id="sidebar.widgets" /> */}
+                  Quiz List
                 </span>
               </NavLink>
             </li>
