@@ -7,9 +7,7 @@ import Collapsible from "react-collapsible";
 import Button from "@material-ui/core/Button";
 import { questions, level, category } from "./data";
 import SearchBox from "./../SearchBox/index";
-import red from "@material-ui/core/colors/red";
 import Menu from "./../Menu/index";
-import purple from "@material-ui/core/colors/purple";
 
 class QuestionsList extends Component {
   constructor(props) {

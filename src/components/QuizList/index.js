@@ -1,23 +1,13 @@
 import React, { Component } from "react";
 import CardBox from "components/CardBox/index";
 import IntlMessages from "util/IntlMessages";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { category, level } from "./data";
+import Collapsible from "react-collapsible";
 
 class QuizList extends Component {
   constructor(props) {
     super(props);
-    // this.addQuiz = this.addQuiz.bind(this);
 
     this.state = {
       quizlist: "",
@@ -64,7 +54,13 @@ class QuizList extends Component {
   handleDateChange = date => {
     this.setState({ selectedDate: date.target.value });
   };
-
+  handleChangeRoute = id => event => {
+    console.log("id", id);
+    // this.setState({ selectedDate: date.target.value });
+  };
+  createQuizRoute = () => {
+    this.props.history.push("/app/createquiz");
+  };
   render() {
     console.log("state", this.state);
     return (
@@ -74,33 +70,35 @@ class QuizList extends Component {
             styleName="col-lg-12"
             heading={<IntlMessages id="Quiz List:" />}
           >
+            <div className="row float-right" style={{ marginTop: "25px" }}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={this.createQuizRoute}
+              >
+                Create Quiz
+              </Button>
+            </div>
             <div className="">
               {this.state.quizlist !== "" ? (
                 this.state.quizlist.map(item => {
                   return (
-                    // <div>
-                    <div className="row">
+                    <Collapsible trigger={`Quiz Name   ${item.quiz_name}`}>
                       <div className="col">
-                        <h1>{item.quiz_name}</h1>
+                        <div onClick={this.handleChangeRoute(item.id)}>
+                          <h1>{item.quiz_name}</h1>
+                          <br />
+                          <br />
+                        </div>
                         <p className="mr-5">{item.date}</p>
                       </div>
-                      <br />
                       <hr />
-                    </div>
+                    </Collapsible>
                   );
                 })
               ) : (
                 <div>Quiz List</div>
               )}
-              <div className="col-2 float-left" style={{ marginTop: "25px" }}>
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={this.addQuiz}
-                >
-                  Crate Quiz
-                </Button>
-              </div>
             </div>
           </CardBox>
         </div>
