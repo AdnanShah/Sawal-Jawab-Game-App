@@ -61,6 +61,9 @@ class QuizList extends Component {
   createQuizRoute = () => {
     this.props.history.push("/app/createquiz");
   };
+  quizDetailsRoute = () => {
+    this.props.history.push("/app/quizquestions");
+  };
   render() {
     console.log("state", this.state);
     return (
@@ -70,7 +73,7 @@ class QuizList extends Component {
             styleName="col-lg-12"
             heading={<IntlMessages id="Quiz List:" />}
           >
-            <div className="row float-right" style={{ marginTop: "25px" }}>
+            <div className="row">
               <Button
                 variant="outlined"
                 color="secondary"
@@ -83,17 +86,26 @@ class QuizList extends Component {
               {this.state.quizlist !== "" ? (
                 this.state.quizlist.map(item => {
                   return (
-                    <Collapsible trigger={`Quiz Name   ${item.quiz_name}`}>
-                      <div className="col">
-                        <div onClick={this.handleChangeRoute(item.id)}>
-                          <h1>{item.quiz_name}</h1>
-                          <br />
-                          <br />
+                    <div className="mr-5 ml-5" style={{ lineHeight: "2px" }}>
+                      <Collapsible trigger={`Title:   ${item.quiz_name}`}>
+                        <div className="col">
+                          <div onClick={this.handleChangeRoute(item.id)}>
+                            <h1>{item.quiz_name}</h1>
+                            <br />
+                            <br />
+                          </div>
+                          <p className="mr-5">{item.date}</p>
+                          <Button
+                            variant="outlined"
+                            color="secondary"
+                            onClick={this.quizDetailsRoute}
+                          >
+                            Quiz Details
+                          </Button>
                         </div>
-                        <p className="mr-5">{item.date}</p>
-                      </div>
-                      <hr />
-                    </Collapsible>
+                        <hr />
+                      </Collapsible>
+                    </div>
                   );
                 })
               ) : (
