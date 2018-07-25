@@ -44,9 +44,7 @@ class ReactTables extends Component {
       },
       data: {
         quiz_id:
-          this.props.location.state == null
-            ? 11
-            : this.props.location.state.key
+          this.props.location.state == null ? 11 : this.props.location.state.key
       }
     })
       .then(res => {
@@ -79,7 +77,10 @@ class ReactTables extends Component {
             heading={<IntlMessages id="Quiz Questions:" />}
           >
             <h1 className="ml-2 bold mb-5 mt-5 ">Quiz Questions:</h1>
-            {questions.map((item, i) => {
+            {(this.state.userArray.length >= 1
+              ? this.state.userArray
+              : questions
+            ).map((item, i) => {
               return (
                 <div
                   className="mr-5 ml-5"
@@ -91,7 +92,7 @@ class ReactTables extends Component {
                     <List component="nav">
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`}    ${
-                          item.options1
+                          item.answer
                         }`}</p>
                         <NavLink to="/app/questionslist">
                           <Button
@@ -106,23 +107,7 @@ class ReactTables extends Component {
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
-                          item.options2
-                        }`}</p>
-
-                        <NavLink to="/app/questionslist">
-                          <Button
-                            className="float-right"
-                            size="small"
-                            color="primary"
-                            variant="outlined"
-                          >
-                            Search Questions
-                          </Button>
-                        </NavLink>
-                      </div>
-                      <div className="row mt-2 mb-2">
-                        <p className="col">{`${`Q#${i + 1}`} ${
-                          item.options3
+                          item.option_b
                         }`}</p>
 
                         <NavLink to="/app/questionslist">
@@ -138,7 +123,23 @@ class ReactTables extends Component {
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
-                          item.options4
+                          item.option_c
+                        }`}</p>
+
+                        <NavLink to="/app/questionslist">
+                          <Button
+                            className="float-right"
+                            size="small"
+                            color="primary"
+                            variant="outlined"
+                          >
+                            Search Questions
+                          </Button>
+                        </NavLink>
+                      </div>
+                      <div className="row mt-2 mb-2">
+                        <p className="col">{`${`Q#${i + 1}`} ${
+                          item.option_d
                         }`}</p>
 
                         <NavLink to="/app/questionslist">
