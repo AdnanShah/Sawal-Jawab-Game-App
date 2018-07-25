@@ -104,8 +104,8 @@ class Default extends React.Component {
         />
 
         {/* <CreateQuestions match={`components`} /> */}
-        <Form />
-        <QuizQuestions />
+        {/* <Form /> */}
+        {/* <QuizQuestions /> */}
         <div className="row">
           <div className="col-xl-5 col-12">
             <div className="jr-card p-0">
