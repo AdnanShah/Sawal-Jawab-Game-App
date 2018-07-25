@@ -6,7 +6,7 @@ import List from "@material-ui/core/List";
 import Collapsible from "react-collapsible";
 import Button from "@material-ui/core/Button";
 import { questions } from "./data";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 class ReactTables extends Component {
   constructor(props) {
@@ -18,24 +18,40 @@ class ReactTables extends Component {
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiaWF0IjoxNTMwOTMyMzY2fQ.zqmGxDLhsKFomoYcDwFVArh5CZzSzJUrubHisOwEB80",
       userArray: [],
       questions
+      // id: this.props.location.state === null ? 11 : this.props.location.state.key.id
     };
   }
+  // componentDidMount() {
+  //   this.props.location.state
+  //     ? this.setState({
+  //         id: this.props.location.state.key.id
+  //       })
+  //     : -1;
+
+  //   // this.setState({id:})
+  // }
   componentWillMount() {
-    console.log("in did mount");
+    // console.log("in did mount", this.props, this.props.location.state.key);
     let data = this.state.x_access_key;
     let token = this.state.x_access_token;
     axios({
       method: "POST",
-      url: "https://seenmeem.herokuapp.com/api/services/fetchQuestionsList",
+      url: "https://seenmeem.herokuapp.com/api/services/fetchQuiz",
       headers: {
         "x-access-key": data,
         "x-access-token": token
-        // 'Content-Type': 'application/x-www-form-urlencoded'
+        // "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        quiz_id:
+          this.props.location.state == null
+            ? 11
+            : this.props.location.state.key
       }
     })
       .then(res => {
         let userArray = res.data.message;
-        console.log("key", userArray);
+        console.log("key", res, userArray);
         // let all_user = [];
         // for (let i = 0; i < key.length; i++) {
         //   let k = key[i]
@@ -53,6 +69,7 @@ class ReactTables extends Component {
       });
   }
   render() {
+    // console.log("props", this.props.location.state.key);
     console.log("state", this.state);
     return (
       <div className="animated slideInUpTiny animation-duration-3">
@@ -64,7 +81,11 @@ class ReactTables extends Component {
             <h1 className="ml-2 bold mb-5 mt-5 ">Quiz Questions:</h1>
             {questions.map((item, i) => {
               return (
-                <div className="mr-5 ml-5" style={{ lineHeight: "2px" }}>
+                <div
+                  className="mr-5 ml-5"
+                  style={{ lineHeight: "2px" }}
+                  key={i}
+                >
                   <Collapsible trigger={`Q#${i + 1}`}>
                     <h1>{item.question}</h1>
                     <List component="nav">

@@ -56,13 +56,18 @@ class QuizList extends Component {
   };
   handleChangeRoute = id => event => {
     console.log("id", id);
-    // this.setState({ selectedDate: date.target.value });
-  };
+   };
   createQuizRoute = () => {
     this.props.history.push("/app/createquiz");
   };
-  quizDetailsRoute = () => {
-    this.props.history.push("/app/quizquestions");
+  quizDetailsRoute = id => e => {
+    console.log("id", id);
+    this.props.history.push({
+      pathname: "/app/quizquestions",
+      state: {
+        key: id
+      }
+    });
   };
   render() {
     console.log("state", this.state);
@@ -98,7 +103,7 @@ class QuizList extends Component {
                           <Button
                             variant="outlined"
                             color="secondary"
-                            onClick={this.quizDetailsRoute}
+                            onClick={this.quizDetailsRoute(item.id)}
                           >
                             Quiz Details
                           </Button>
