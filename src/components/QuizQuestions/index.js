@@ -44,12 +44,16 @@ class ReactTables extends Component {
       },
       data: {
         quiz_id:
-          this.props.location.state == null ? true : this.props.location.state.key
+          this.props.location.state == null
+            ? true
+            : this.props.location.state.key
       }
     })
       .then(res => {
         let userArray = res.data.message;
-        console.log("key", res, userArray);
+        let quizID = JSON.parse(localStorage.quizID || null) || {};
+        console.log("key", res, userArray, "quizID", quizID);
+
         // let all_user = [];
         // for (let i = 0; i < key.length; i++) {
         //   let k = key[i]
@@ -60,12 +64,21 @@ class ReactTables extends Component {
         //     ItemName: res.data.data[k].ItemName,
         //   })
         // }
-        this.setState({ userArray });
+        this.setState({ userArray, quizID });
       })
       .catch(err => {
         console.log("error in res", err);
       });
   }
+  addQuizQues = obj => e => {
+    console.log("obj", obj);
+    this.props.history.push({
+      pathname: "/app/questionslist",
+      state: {
+        key: obj
+      }
+    });
+  };
   render() {
     // console.log("props", this.props.location.state.key);
     console.log("state", this.state);
@@ -94,64 +107,80 @@ class ReactTables extends Component {
                         <p className="col">{`${`Q#${i + 1}`}    ${
                           item.answer
                         }`}</p>
-                        <NavLink to="/app/questionslist">
-                          <Button
-                            className="float-right"
-                            size="small"
-                            color="primary"
-                            variant="outlined"
-                          >
-                            Search Questions
-                          </Button>
-                        </NavLink>
+                        {/* <NavLink to="/app/questionslist"> */}
+                        <Button
+                          className="float-right"
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                          onClick={this.addQuizQues({
+                            parent_id: i + 1,
+                            question_name: "a"
+                          })}
+                        >
+                          Search Questions
+                        </Button>
+                        {/* </NavLink> */}
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
                           item.option_b
                         }`}</p>
 
-                        <NavLink to="/app/questionslist">
-                          <Button
-                            className="float-right"
-                            size="small"
-                            color="primary"
-                            variant="outlined"
-                          >
-                            Search Questions
-                          </Button>
-                        </NavLink>
+                        {/* <NavLink to="/app/questionslist"> */}
+                        <Button
+                          className="float-right"
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                          onClick={this.addQuizQues({
+                            parent_id: i + 1,
+                            question_name: "b"
+                          })}
+                        >
+                          Search Questions
+                        </Button>
+                        {/* </NavLink> */}
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
                           item.option_c
                         }`}</p>
 
-                        <NavLink to="/app/questionslist">
-                          <Button
-                            className="float-right"
-                            size="small"
-                            color="primary"
-                            variant="outlined"
-                          >
-                            Search Questions
-                          </Button>
-                        </NavLink>
+                        {/* <NavLink to="/app/questionslist"> */}
+                        <Button
+                          className="float-right"
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                          onClick={this.addQuizQues({
+                            parent_id: i + 1,
+                            question_name: "c"
+                          })}
+                        >
+                          Search Questions
+                        </Button>
+                        {/* </NavLink> */}
                       </div>
                       <div className="row mt-2 mb-2">
                         <p className="col">{`${`Q#${i + 1}`} ${
                           item.option_d
                         }`}</p>
 
-                        <NavLink to="/app/questionslist">
-                          <Button
-                            className="float-right"
-                            size="small"
-                            color="primary"
-                            variant="outlined"
-                          >
-                            Search Questions
-                          </Button>
-                        </NavLink>
+                        {/* <NavLink to="/app/questionslist"> */}
+                        <Button
+                          className="float-right"
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                          onClick={this.addQuizQues({
+                            parent_id: i + 1,
+                            question_name: "d"
+                          })}
+                        >
+                          Search Questions
+                        </Button>
+                        {/* </NavLink> */}
                       </div>
                     </List>
                   </Collapsible>

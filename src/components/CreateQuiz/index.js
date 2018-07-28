@@ -44,8 +44,6 @@ class CreateQuiz extends Component {
         data: {
           quiz_name: this.state.quizname,
           date: this.state.selectedDate
-          // type: this.state.session,
-          // type: this.state.selectedDate
         }
       })
         .then(res => {

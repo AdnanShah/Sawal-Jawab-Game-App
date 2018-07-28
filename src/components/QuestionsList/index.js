@@ -19,10 +19,13 @@ class QuestionsList extends Component {
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiaWF0IjoxNTMwOTMyMzY2fQ.zqmGxDLhsKFomoYcDwFVArh5CZzSzJUrubHisOwEB80",
       userArray: [],
       originalResponse: [],
+      arrOfQuestion: [],
       questions,
       searchText: "",
       category: "",
-      level: ""
+      level: "",
+      obj:
+        this.props.location.state == null ? {} : this.props.location.state.key
     };
   }
 
@@ -36,12 +39,12 @@ class QuestionsList extends Component {
       headers: {
         "x-access-key": data,
         "x-access-token": token
-        // 'Content-Type': 'application/x-www-form-urlencoded'
+        // "Content-Type": "application/x-www-form-urlencoded"
       }
     })
       .then(res => {
         let userArray = res.data.message;
-        console.table(userArray);
+        // console.table(userArray);
         // let all_user = [];
         // for (let i = 0; i < key.length; i++) {
         //   let k = key[i]
@@ -95,8 +98,51 @@ class QuestionsList extends Component {
     this.setState({ userArray: searchBy });
   };
 
+  addQuestion(queArray) {
+    let data = this.state.x_access_key;
+    let token = this.state.x_access_token;
+
+    if (this.state.arrOfQuestion.length >= 1) {
+      console.log("queArray", queArray);
+      axios({
+        method: "POST",
+        url: "https://seenmeem.herokuapp.com/api/services/addQuestion",
+        headers: {
+          // "Content-Type": "application/x-www-form-urlencoded",
+          "x-access-key": data,
+          "x-access-token": token
+        },
+        data: {
+          questions: JSON.stringify(queArray)
+        }
+      })
+        .then(res => {
+          console.log("res", res);
+          // let quizID = res.data.id;
+          // localStorage.quizID = JSON.stringify(quizID);
+          // this.props.history.push("/app/quizquestions");
+        })
+        .catch(err => {
+          console.log("error in request", err);
+        });
+    }
+  }
+
   addToQuestionList = item => e => {
-    console.log("item", item);
+    let quiz_id = JSON.parse(localStorage.quizID || null) || "";
+    let question = {
+      ...this.state.obj,
+      question: item.question,
+      answer: item.answer,
+      option_b: item.option_b,
+      option_c: item.option_c,
+      option_d: item.option_d,
+      quiz_id,
+      type: item.difficulty
+    };
+    this.state.arrOfQuestion.push(question);
+    console.table(this.state.arrOfQuestion);
+    this.addQuestion(this.state.arrOfQuestion);
   };
   render() {
     console.log("state", this.state);
