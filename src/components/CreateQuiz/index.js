@@ -33,27 +33,31 @@ class CreateQuiz extends Component {
     console.log("addQuiz", this.state);
     let data = this.state.x_access_key;
     let token = this.state.x_access_token;
-
-    axios({
-      method: "POST",
-      url: "https://seenmeem.herokuapp.com/api/services/createQuiz",
-      headers: {
-        "x-access-key": data,
-        "x-access-token": token
-      },
-      data: {
-        quiz_name: this.state.quizname,
-        date: this.state.datetime
-        // type: this.state.session,
-        // type: this.state.selectedDate
-      }
-    })
-      .then(res => {
-        console.log("res", res);
+    if (this.state.quizname != "") {
+      axios({
+        method: "POST",
+        url: "https://seenmeem.herokuapp.com/api/services/createQuiz",
+        headers: {
+          "x-access-key": data,
+          "x-access-token": token
+        },
+        data: {
+          quiz_name: this.state.quizname,
+          date: this.state.selectedDate
+          // type: this.state.session,
+          // type: this.state.selectedDate
+        }
       })
-      .catch(err => {
-        console.log("error in request", err);
-      });
+        .then(res => {
+          // console.log("res", res);
+          let quizID = res.data.id;
+          localStorage.quizID = JSON.stringify(quizID);
+          this.props.history.push("/app/quizquestions");
+        })
+        .catch(err => {
+          console.log("error in request", err);
+        });
+    }
   };
 
   handleChange = prop => event => {
@@ -64,7 +68,7 @@ class CreateQuiz extends Component {
   };
 
   render() {
-    console.log("state", this.state);
+    // console.log("state", this.state);
     return (
       <div className="animated slideInUpTiny animation-duration-3">
         <div className="m-5">

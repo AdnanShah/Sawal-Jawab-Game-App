@@ -44,7 +44,7 @@ class ReactTables extends Component {
       },
       data: {
         quiz_id:
-          this.props.location.state == null ? 11 : this.props.location.state.key
+          this.props.location.state == null ? true : this.props.location.state.key
       }
     })
       .then(res => {

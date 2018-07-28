@@ -26,8 +26,6 @@ class QuestionsList extends Component {
     };
   }
 
-  
-
   componentWillMount() {
     console.log("in did mount");
     let data = this.state.x_access_key;
@@ -97,6 +95,9 @@ class QuestionsList extends Component {
     this.setState({ userArray: searchBy });
   };
 
+  addToQuestionList = item => e => {
+    console.log("item", item);
+  };
   render() {
     console.log("state", this.state);
     return (
@@ -176,6 +177,7 @@ class QuestionsList extends Component {
                           variant="contained"
                           color="primary"
                           className="ml-5"
+                          onClick={this.addToQuestionList(item)}
                         >
                           Add
                         </Button>
